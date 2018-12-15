@@ -5,10 +5,10 @@ class sellsyConnect_curl {
 	private static $api_url										= "https://apifeed.sellsy.com/0/";
 	
 	// DEV (MICHAEL)
-  private static $oauth_consumer_key				= "c23ea717a8dbf8d3fbbb48820f04c6422e74761c";
-  private static $oauth_consumer_secret			= "676422607b5b8445e4c9b16c2012a0cc7fde9ff1";	
-  private static $oauth_access_token				= "85cc175f4eb12d5a12b877d5ed310336520b44a5";
-  private static $oauth_access_token_secret	= "42ddce929d6f75f12ab4aada3aa799b163b287d6";
+  private static $oauth_consumer_key		= "";
+  private static $oauth_consumer_secret		= "";	
+  private static $oauth_access_token		= "";
+  private static $oauth_access_token_secret	= "";
 
   private static $instance;
 	
