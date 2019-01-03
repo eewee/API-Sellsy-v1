@@ -181,7 +181,7 @@ $request =  array(
     'params' => array (
         'docid' => 7398306,
         'document' => array(
-            'doctype' => "invoice",
+            'doctype' => "estimate",
             'step'    => "due" // draft = brouillon, due = A regler, payinprogress = paiement partiel, paid = payee, late = retard, cancelled = annulee
         )
     ),
