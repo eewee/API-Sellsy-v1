@@ -155,6 +155,38 @@ $request =  array(
     )
 );
 
+/**
+ * Document.updateStep :
+ *
+ * - DRAFT :
+ *   une fois passé dans une étape autre que "draft", il n'est plus possible de revenir en "draft".
+ *   erreur : Step draft is invalid. Available : payinprogress, paid, late.
+ *
+ * - DUE :
+ *   une fois passé en "due", il n'est plus possible de revenir en "draft", "cancelled".
+ *   erreur : Step due is invalid. Available : payinprogress, paid, late.
+ *
+ * - PAYINPROGRESS :
+ *   une fois passé en "payinprogress", il n'est plus possible de revenir en "draft", "due", "late", "cancelled".
+ *   erreur : Step payinprogress is invalid. Available : paid.
+ *
+ * - PAID :
+ *   une fois passé en "paid", il n'est plus possible de changer le statut.
+ *
+ * - CANCELLED :
+ *   une fois passé en "cancelled", il n'est plus possible de changer le statut.
+ */
+$request =  array(
+    'method' => 'Document.updateStep',
+    'params' => array (
+        'docid' => 7398306,
+        'document' => array(
+            'doctype' => "invoice",
+            'step'    => "due" // draft = brouillon, due = A regler, payinprogress = paiement partiel, paid = payee, late = retard, cancelled = annulee
+        )
+    ),
+);
+
 $request =  array(
     'method' => 'Document.createPayment',
     'params' => array (
