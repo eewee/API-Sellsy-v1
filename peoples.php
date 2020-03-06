@@ -22,6 +22,8 @@ $request = array(
       'search' => array(
           'contains' => 'contact@tld.com',
           'actif'    => 'Y',
+          //'mobile' => ['+33631963517','+33618937712'],
+          'tel' => ['+590590483797','+33153872564']
       ),
     )
 );
