@@ -108,6 +108,33 @@ $request = array(
     )
 );
 
+$request = array(
+    'method' => 'Client.addContact',
+    'params' => array (
+        'clientid' => 1266907,
+        'contact'  => [
+            'name'             => 'DOE_'.uniqid(),
+            'forename'         => 'John_'.uniqid(),
+            'email'            => 'test_api_'.uniqid().'@tld.com',
+            'isBillingContact' => 'Y'
+        ]
+    )
+);
+
+$request = array(
+    'method' => 'Client.updateContact',
+    'params' => array (
+        'clientid'  => 1266907,
+        'contactid' => 448445,
+        'contact'   => [
+            'name'             => 'DOE_'.uniqid(),
+            'forename'         => 'John_'.uniqid(),
+            'email'            => 'test_api_'.uniqid().'@tld.com',
+            'isBillingContact' => 'Y'
+        ]
+    )
+);
+
 $response = sellsyconnect_curl::load()->requestApi($request);
 echo '<pre>'.var_export($response, true).'</pre>';
 echo '<hr>';
