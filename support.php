@@ -7,17 +7,19 @@ require_once "libs/sellsyconnect_curl.php";
 //---------------------------------------------------------------------------
 
 $request = array(
-	'method' => 'Support.getList',
-	'params' => array(
-		'search' => array(
-			'contains' => 'contact@tld.com'
-			//'contains' => 'TEST API ticket',
-		),
-		'pagination' => array(
-			'pagenum'   => 1,
-			'nbperpage' => 999
-		)
-	)
+    'method' => 'Support.getList',
+    'params' => array(
+        'pagination' => array(
+            'pagenum'   => 1,
+            'nbperpage' => 999
+        ),
+        'search' => array(
+            'thirdType' => ['client'],
+            'thirds' => [1266907],
+            //'contains' => 'contact@tld.com',
+            //'contains' => 'TEST API ticket',
+        ),
+    )
 );
 
 $request = array(
