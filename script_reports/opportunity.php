@@ -13,7 +13,7 @@ define('PATH_BASE', 'https://app.slsy.io');
 //---------------------------------------------------------------------------
 
 // Config
-$nbOppToCreate = 10;
+$nbOppToCreate = 1;
 
 // List status
 $oppStatusList = ['open', 'won', 'lost', 'late'/*, 'cancelled'*/];
@@ -112,7 +112,7 @@ for ($oppToGenerate=0; $oppToGenerate<$nbOppToCreate; $oppToGenerate++) {
     $resSteps = sellsyconnect_curl::load()->requestApi($reqSteps);
     $resStepsArray = (array)$resSteps->response;
     $resStepsKeys = array_keys($resStepsArray);
-    array_pop($resStepsKeys);
+    if (sizeof($resStepsKeys) > 1) { array_pop($resStepsKeys); }
     $stepIdRandom = $resStepsArray[array_rand($resStepsKeys)]->id;
 
     // Create
@@ -153,6 +153,7 @@ for ($oppToGenerate=0; $oppToGenerate<$nbOppToCreate; $oppToGenerate++) {
         ];
         $resUpdateStatus = sellsyconnect_curl::load()->requestApi($reqUpdateStatus);
     } else {
-        echo "ERROR : opp";
+        echo "<pre>".var_export($resOpp, true)."</pre>";
+        echo "ERROR : opp not create<hr>";
     }
 }
