@@ -7,14 +7,13 @@ require_once "libs/sellsyconnect_curl.php";
 //---------------------------------------------------------------------------
 
 /*
-// SAAS-8140
 $request =  array(
     'method' => 'Annotations.create',
     'params' => array(
         'annotation' => array(
             'relatedtype' => 'task',
             'relatedid'   => '68951',
-            'text'        => 'Test : \n Lorem ipsum - saas-8140 (6).'
+            'text'        => 'Test : \n Lorem ipsum - (6).'
         )
     )
 );
@@ -26,7 +25,6 @@ $request =  array(
     )
 );
 
-// SAAS-7837
 $request =  array(
     'method' => 'Annotations.getOne',
     'params' => array(
@@ -94,14 +92,13 @@ $request =  array(
     )
 );
 
-// SAAS-7164
 $request =  array(
     'method' => 'Annotations.create',
     'params' => array(
         'annotation' => array(
             'relatedtype' => 'delivery', // third, estimate, opportunity, googleEvent, outlookEvent
             'relatedid'   => '985398',
-            'text'        => 'Test : \n Lorem ipsum - saas-7164.'
+            'text'        => 'Test : \n Lorem ipsum - .'
         )
     )
 );

@@ -6,7 +6,6 @@ require_once "libs/sellsyconnect_curl.php";
 // Agenda
 //---------------------------------------------------------------------------
 
-// SAAS-6511
 $request =  array(
     'method' => 'Agenda.getList',
     'params' => array(
