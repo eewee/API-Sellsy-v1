@@ -1,3 +1,4 @@
 .idea
 /vendor
 .env
+/libs/sellsyconnect_curl.php
