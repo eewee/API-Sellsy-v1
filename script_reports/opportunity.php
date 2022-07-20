@@ -19,7 +19,7 @@ $nbOppToCreate = 1;
 $oppStatusList = ['open', 'won', 'lost', 'late'/*, 'cancelled'*/];
 
 // Faker (init)
-$faker          = Faker\Factory::create("fr_FR");
+$faker = Faker\Factory::create("fr_FR");
 
 // Get id client random
 $getClients = array(
@@ -40,6 +40,7 @@ $dateNowLess2Weeks = strtotime('-2 weeks', $dateNow);
 
 //-----------------------------------------------------------------------------
 
+echo "<h1>Opportunity :</h1>";
 for ($oppToGenerate=0; $oppToGenerate<$nbOppToCreate; $oppToGenerate++) {
     // Random faker
     $fakerNote      = $faker->paragraph(3, true);
@@ -141,7 +142,10 @@ for ($oppToGenerate=0; $oppToGenerate<$nbOppToCreate; $oppToGenerate++) {
 
     if ($resOpp->status == 'success') {
         $oppId = $resOpp->response;
-        echo "<a href='" . PATH_BASE . "/prospection/opportunities/" . $oppId . "' target='_blank'>Opp " . $oppId . "</a><hr>";
+        echo "
+        <a href='" . PATH_BASE . "/prospection/opportunities/" . $oppId . "' target='_blank'>
+            ".date('Y-m-d H:i:s')." - N°".$oppToGenerate." - Opp " . $oppId . "
+        </a><hr>";
 
         // Update status
         $reqUpdateStatus = [
@@ -157,3 +161,4 @@ for ($oppToGenerate=0; $oppToGenerate<$nbOppToCreate; $oppToGenerate++) {
         echo "ERROR : opp not create<hr>";
     }
 }
+echo "<h2>END</h2>";

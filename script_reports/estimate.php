@@ -44,7 +44,8 @@ foreach ($responseGetTax->response as $res) {
 
 //-----------------------------------------------------------------------------
 
-for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
+echo "<h1>Estimate :</h1>";
+for ($iDoc=0; $iDoc<$nbDocToCreate; $iDoc++) {
     // Step
     $docStepRandom = array_rand($docStep);
     $docStepValue  = $docStep[$docStepRandom];
@@ -141,7 +142,9 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
     $resDocCreate = sellsyconnect_curl::load()->requestApi($reqDocCreate);
     $resDocCreateArray = (array)$resDocCreate->response;
     $docId = $resDocCreateArray['doc_id'];
-    echo "<a href='".PATH_BASE."/?_f=estimateOverview&id=".$docId."' target='_blank'>".$docId."</a><hr>";
+    echo "<a href='".PATH_BASE."/?_f=estimateOverview&id=".$docId."' target='_blank'>
+        ".date('Y-m-d H:i:s')." - N°".$iDoc." - docId:".$docId."
+    </a><hr>";
 
     // Set owner
     $reqOwner =  [
@@ -190,4 +193,4 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
         $resLinkGroup = sellsyconnect_curl::load()->requestApi($reqLinkGroup);
     }
 }
-
+echo "<h2>END</h2>";

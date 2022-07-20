@@ -22,13 +22,13 @@ $docType       = 'invoice';
 $docStep       = ['due', /*'payinprogress',*/ 'paid', 'late', /*'cancelled'*/];
 
 // Faker (init)
-$faker        = Faker\Factory::create("fr_FR");
+$faker = Faker\Factory::create("fr_FR");
 
 // Get date
-$date                    = new DateTime();
-$dateNow                 = $date->getTimestamp();
-//$dateNowAdd30          = strtotime('+30 days', $dateNow);
-$dateNowLess6Months      = strtotime('-6 months', $dateNow);
+$date               = new DateTime();
+$dateNow            = $date->getTimestamp();
+//$dateNowAdd30     = strtotime('+30 days', $dateNow);
+$dateNowLess6Months = strtotime('-6 months', $dateNow);
 
 // Get tax
 $taxId = '';
@@ -47,7 +47,8 @@ foreach ($responseGetTax->response as $res) {
 
 //-----------------------------------------------------------------------------
 
-for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
+echo "<h1>Invoice :</h1>";
+for ($iDoc=0; $iDoc<$nbDocToCreate; $iDoc++) {
     // Step
     $docStepRandom = array_rand($docStep);
     $docStepValue  = $docStep[$docStepRandom];
@@ -115,7 +116,7 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
             'document' => [
                 'doctype'       => $docType,
                 'thirdid'       => $clientId,
-                'ident'         => 'FACT_'.uniqid(),
+                //'ident'         => 'FACT_'.uniqid(),
                 'subject'       => $fakerSubject,
                 'notes'         => $fakerNote,
             ],
@@ -144,7 +145,10 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
     $resDocCreate = sellsyconnect_curl::load()->requestApi($reqDocCreate);
     $resDocCreateArray = (array)$resDocCreate->response;
     $docId = $resDocCreateArray['doc_id'];
-    echo "<a href='".PATH_BASE."/?_f=invoiceOverview&id=".$docId."' target='_blank'>".$docId."</a><hr>";
+    echo "
+    <a href='".PATH_BASE."/?_f=invoiceOverview&id=".$docId."' target='_blank'>
+        ".date('Y-m-d H:i:s')." - N°".$iDoc." - docId:".$docId."
+    </a><hr>";
 
     // Set owner
     $reqOwner =  [
@@ -220,4 +224,4 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
         $resLinkGroup = sellsyconnect_curl::load()->requestApi($reqLinkGroup);
     }
 }
-
+echo "<h2>END</h2>";
