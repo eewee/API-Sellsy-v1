@@ -2,7 +2,7 @@
 require_once "../vendor/autoload.php";
 require_once "../libs/sellsytools.php";
 require_once "../libs/sellsyconnect_curl.php";
-define('PATH_BASE', 'https://app.slsy.io');
+require_once "./config.php";
 
 //---------------------------------------------------------------------------
 // Reports custom : creditnote
