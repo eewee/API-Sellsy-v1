@@ -183,7 +183,6 @@ for ($iDoc=0; $iDoc<$nbDocToCreate; $iDoc++) {
     ];
     $resDocUpdateStep = sellsyconnect_curl::load()->requestApi($reqDocUpdateStep);
 
-    // @todo : addPayment - https://api.sellsy.fr/documentation/methodes#documentcreatepayment
     // Set payment
     if ($usePayment) {
         // Get list of type payment
