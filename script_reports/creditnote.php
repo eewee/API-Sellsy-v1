@@ -77,7 +77,8 @@ $defaultCurrency = $resGetCurrenciesArray['defaultCurrency'];
 
 //-----------------------------------------------------------------------------
 
-for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
+echo "<h1>Creditnote :</h1>";
+for ($iDoc=0; $iDoc<$nbDocToCreate; $iDoc++) {
     // Get Staff
     $idStaffs = [];
     $reStaffs =  [
@@ -117,7 +118,7 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
             'document' => [
                 'doctype'       => $docType,
                 'thirdid'       => $clientId,
-                'ident'         => 'AVR_'.uniqid(),
+                //'ident'         => 'AVR_'.uniqid(),
                 'subject'       => $fakerSubject,
                 'notes'         => $fakerNote,
             ],
@@ -144,9 +145,14 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
         ]
     ];
     $resDocCreate = sellsyconnect_curl::load()->requestApi($reqDocCreate);
+    if ($resDocCreate->status == 'error') {
+        echo "<pre>".var_export($resDocCreate, true)."</pre>";
+    }
     $resDocCreateArray = (array)$resDocCreate->response;
     $docId = $resDocCreateArray['doc_id'];
-    echo "<a href='".PATH_BASE."/?_f=creditnoteOverview&id=".$docId."' target='_blank'>".$docId."</a><hr>";
+    echo "<a href='".PATH_BASE."/?_f=creditnoteOverview&id=".$docId."' target='_blank'>
+        ".date('Y-m-d H:i:s')." - N°".$iDoc." - docId:".$docId."
+    </a><hr>";
 
     // Set owner
     $reqOwner =  [
@@ -158,15 +164,15 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
     ];
     $resOwner = sellsyconnect_curl::load()->requestApi($reqOwner);
 
-//    // Doc validate
-//    $reqDocValidate = [
-//        'method' => 'Document.validate',
-//        'params' => [
-//            'docid' => $docId,
-//            'date'  => $dateBetween6MonthsToNow,
-//        ],
-//    ];
-//    $resDocValidate = sellsyconnect_curl::load()->requestApi($reqDocValidate);
+    // Doc validate
+    $reqDocValidate = [
+        'method' => 'Document.validate',
+        'params' => [
+            'docid' => $docId,
+            'date'  => $dateBetween6MonthsToNow,
+        ],
+    ];
+    $resDocValidate = sellsyconnect_curl::load()->requestApi($reqDocValidate);
 
     // Set status
     $reqDocUpdateStep =  [
@@ -227,3 +233,4 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
         $resLinkGroup = sellsyconnect_curl::load()->requestApi($reqLinkGroup);
     }
 }
+echo "<h2>END</h2>";
