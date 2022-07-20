@@ -105,7 +105,7 @@ for ($iFacture=0; $iFacture<$nbDocToCreate; $iFacture++) {
     }
     $clientId = $clientIds[array_rand($clientIds)];
 
-    // Create invoice
+    // Create
     $reqDocCreate = [
         'method' => 'Document.create',
         'params' => [
