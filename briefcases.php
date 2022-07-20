@@ -10,9 +10,9 @@ $request = array(
     'method' => 'Briefcases.getList',
     'params' => array(
       'search' => array(
-        'linkedtype'	=> 'third',
-        'linkedid'		=> 8045300,
-        'mode'			  => 'flat',
+        'linkedtype' => 'third',
+        'linkedid'	 => 8045300,
+        'mode'		 => 'flat',
       )
     ),
 );

@@ -6,7 +6,7 @@ require_once "libs/sellsyconnect_curl.php";
 // AccountPrefs
 //---------------------------------------------------------------------------
 
-//$request =  array( 
+//$request =  array(
 //    'method' => 'AccountPrefs.getStaffInfos',
 //    'params' => array()
 //);
@@ -15,17 +15,17 @@ require_once "libs/sellsyconnect_curl.php";
 //    'method' => 'AccountPrefs.updateCorpInfos',
 //    'params' => array(
 //        'corp' => array(
-//            'name'      => '[TEST] Michael (NE PAS SUPPRIMER) xxx',
+//            'name'      => '[TEST] Michael (NE PAS SUPPRIMER) yyy',
 //            //'email'     => '',
-//            'tel'       => '+33 1 22 33 44 55',
-//            'fax'       => '+33 1 22 33 44 56',
-//            'web'       => 'https://www.lorem.tld',
-//            'siret'     => '123 456 789 11111',
-//            'siren'     => '111 222 333',
-//            'vat'       => 'IT 12345678901',
-//            'rcs'       => 'LYON A 111 222 333',
+//            'tel'       => '+33 2 02 03 04 06',
+//            'fax'       => '+33 3 02 03 04 07',
+//            'web'       => 'https://www.téx.in',
+//            'siret'     => '971 300 322 11028',
+//            'siren'     => '769 791 959',
+//            'vat'       => 'IT 67980326731',
+//            'rcs'       => 'LYON A 805 600 382',
 //            'type'      => 'SARL',
-//            'capital'   => '111 222,333'
+//            'capital'   => '284 824,764'
 //        )
 //    )
 //);
@@ -46,10 +46,10 @@ require_once "libs/sellsyconnect_curl.php";
 //    'params' => array()
 //);
 
-$request =  array(
-    'method' => 'AccountPrefs.getCurrency',
-    'params' => array()
-);
+//$request =  array(
+//    'method' => 'AccountPrefs.getCurrency',
+//    'params' => array()
+//);
 
 $response = sellsyconnect_curl::load()->requestApi($request);
 echo '<pre>'.var_export($response, true).'</pre>';

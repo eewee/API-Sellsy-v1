@@ -6,6 +6,7 @@ require_once "libs/sellsyconnect_curl.php";
 // Addresses
 //---------------------------------------------------------------------------
 
+/*
 $request =  array( 
     'method' => 'Addresses.getOne',
     'params' => array(
@@ -50,6 +51,15 @@ $request =  array(
     )
 );
 
+$request =  array(
+    'method' => 'Addresses.delete',
+    'params' => array(
+        'id' => 210
+    )
+);
+*/
+
+//echo json_encode($request);
 $response = sellsyconnect_curl::load()->requestApi($request);
 echo '<pre>'.var_export($response, true).'</pre>';
 echo '<hr>';

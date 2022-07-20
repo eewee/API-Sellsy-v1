@@ -3,13 +3,18 @@ require_once "libs/sellsytools.php";
 require_once "libs/sellsyconnect_curl.php";
 
 //---------------------------------------------------------------------------
-// BANKACCOUNT
+// ACCOUNTING
 //---------------------------------------------------------------------------
 
-$request =  [
-    'method' => 'BankAccount.getOne', 
+$request = [
+    'method' => 'Accounting.getList',
     'params' => [
-        'id' => 35373
+//        'pagination' => [
+//            'pagenum' => 1
+//        ],
+        'search' => [
+            'view' => 'third'
+        ]
     ]
 ];
 

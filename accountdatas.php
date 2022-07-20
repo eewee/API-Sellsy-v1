@@ -6,10 +6,21 @@ require_once "libs/sellsyconnect_curl.php";
 // ACCOUNTDATAS
 //---------------------------------------------------------------------------
 
+//{"method":"Accountdatas.getTaxes","params":{"includeEcoTax":"N","enabled":"none"}}
+
+$request = array(
+    'method' => 'Accountdatas.getTaxes',
+    'params' => array(
+        "includeEcoTax" => "N",
+        "enabled" => "none"
+    )
+);
+
+/*
 $request = array(
     'method' => 'Accountdatas.getTranslationLanguages',
     'params' => array()
-);  
+);
 
 $request = array(
     'method' => 'Accountdatas.getRateCategories',
@@ -58,6 +69,44 @@ $request = array(
     'method' =>  'Accountdatas.getUnits',
     'params' => array()
 );
+
+$request = array(
+    'method' => 'Accountdatas.createTaxe',
+    'params' => array(
+        'taxe' => array(
+            'name'      => 'test avec valeur=0',
+            'value'     => '0',
+            'isEnabled' => true
+        )
+    )
+);
+
+$request = array(
+    'method' => 'Accountdatas.updateTaxe',
+    'params' => array(
+        'id'   => 212573,
+        'taxe' => array(
+            'name'      => 'update test avec valeur=0',
+            'value'     => '0',
+            'isEnabled' => true
+        )
+    )
+);
+
+// KO
+$request = array(
+    'method' => 'Accountdatas.createTaxes',
+    'params' => array(
+        'taxes' => array(
+            array(
+                'value' => 10,
+                'isEnabled' => true,
+                'name' => 'test createTaxes'
+            )
+        )
+    )
+);
+*/
 
 $response = sellsyconnect_curl::load()->requestApi($request);
 echo '<pre>'.var_export($response, true).'</pre>';
