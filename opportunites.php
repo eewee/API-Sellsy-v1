@@ -6,6 +6,25 @@ require_once "libs/sellsyconnect_curl.php";
 // Oppportunity
 //---------------------------------------------------------------------------
 
+/*
+$request = array(
+    'method' => 'Opportunities.updateSharingStaffs',
+    'params' =>  array (
+        "linkedid"  => 1129034, //265,
+//      "staffsIds" => [55],
+//      "staffsIds" => [],
+        "staffsIds" => [8021, 9529], //[99, 111],
+    )
+);
+
+$request =  array(
+    'method' => 'Opportunities.updateStep',
+    'params' => array(
+        'oid'    => 1,
+        'stepid' => 2 // 1, 2, ..., 7
+    )
+);
+
 // Changer propriétaire :
 $request =  array( 
     'method' => 'Opportunities.updateOwner', 
@@ -18,24 +37,24 @@ $request =  array(
 $request = array(
     'method' => 'Opportunities.update',
     'params' => array(
-        'id' => 1748840,
+        'id' => 1125490, // 1125479 !partage , 1125480 partage
         'opportunity' => array(
-            'ident'     => 'OPP-API-'.date('YmdHis'),
-            'sourceid'  => '31155',
+            'ident'     => 'OPP-APIdsfsdfsdfsd-'.date('YmdHis'),
+            'sourceid'  => '2188',
             'name'      => 'API - test changement client.',
-            'staffs'    => array(73460),
+            'staffs'    => array(6791),
         )
     )
 );
 
 $request = array(
-		'method' => 'Opportunities.getOne', 
-		'params' => array(
-				'id' => 1087544
-		)
+    'method' => 'Opportunities.getOne',
+    'params' => array(
+        'id' => 1125547
+    )
 );
 
-$request = array( 
+$request = array(
     'method' => 'Opportunities.getList', 
     'params' => array(
         'search' => array(
@@ -67,7 +86,7 @@ $request = array(
 //						'staffs'	 => {{staffs}},
 //						'stepid'	 => {{stepid}},
 						'status'   => array(
-							'open', 
+							'open',
 							'won',
 //							'lost',
 //							'late',
@@ -80,8 +99,8 @@ $request = array(
 
 // getCurrentIdent
 $request = array(
-		'method' => 'Opportunities.getCurrentIdent',
-		'params' => array()
+	'method' => 'Opportunities.getCurrentIdent',
+	'params' => array()
 );
 $response = sellsyconnect_curl::load()->requestApi($request);
 echo '<pre>'.var_export($response, true).'</pre>';
@@ -93,30 +112,30 @@ $request = array(
     'method' => 'Opportunities.create',
     'params' => array(
         'opportunity' => array(
-            'linkedtype'     => 'prospect',
-            'linkedid'       => 9609348,
+            'linkedtype'     => 'third',
+            'linkedid'       => 1266907,
             'ident'          => $opp_next,
-            'sourceid'       => 45138,	             // ex : site web (https://www.sellsy.fr/?_f=prospection_prefs&action=sources)
+            'sourceid'       => 2187,	             // ex : site web (https://www.sellsy.fr/?_f=prospection_prefs&action=sources)
             //'dueDate'      => {{dueDate}},
             //'creationDate' => {{creationDate}},
-            'name'           => 'lorem ipsum via API',
+            'name'           => 'lorem ipsum via API '.date('Y-m-d H:i:s'),
             //'potential'    => {{potential}},
-            'funnelid'       => 30229,
-            'stepid'         => 210134,
+            'funnelid'       => 1501,
+            'stepid'         => 10354,
             //'proba'        => {{proba}},
             //'brief'        => {{brief}},
             //'stickyNote'   => {{stickyNote}},
             //'tags'         => {{tags}},
             //'ownerid'      => 77097,						  // Propriétaire
             //'staffs'       => array(75599),			  // Collaborateur affecté
-            'contacts'       => '7880193,9318655',  // Id a récupérer via un Prospects.getOne
+            //'contacts'       => '7880193,9318655',  // Id a récupérer via un Prospects.getOne
         )
     )
 );
 
 $request = array(
-		'method' => 'Opportunities.getCurrentIdent',
-		'params' => array()
+    'method' => 'Opportunities.getCurrentIdent',
+    'params' => array()
 );
 $response = sellsyconnect_curl::load()->requestApi($request);
 echo '<pre>'.var_export($response, true).'</pre>';
@@ -140,9 +159,9 @@ $request = array(
             //'brief'        => {{brief}},
             //'stickyNote'   => {{stickyNote}},
             //'tags'         => {{tags}},
-            //'ownerid'      => 77097,				 // Propriétaire
+            //'ownerid'      => 77097,			 // Propriétaire
             //'staffs'       => array(75599),	 // Collaborateur affecté
-            //'contacts'     => '15208911',    // Id a récupérer via un Prospects.getOne / peopleid=15701462, >>> id=15208911 <<<
+            //'contacts'     => '15208911',      // Id a récupérer via un Prospects.getOne / peopleid=15701462, >>> id=15208911 <<<
         )
     )
 );
@@ -185,15 +204,22 @@ $request = array(
 );
 
 $request = array(
-    'method' => 'Opportunities.getSources', 
+    'method' => 'Opportunities.getSources',
     'params' => array()
 );
+!
+$request = [
+    'method' => 'Opportunities.deleteSource',
+    'params' => ["id"=>1365]
+];
+
 $request = array(
     'method' => 'Opportunities.getSource', 
     'params' => array(
         'id'    => {{sourceid}}
     )
 );
+*/
 
 $response = sellsyconnect_curl::load()->requestApi($request);
 echo '<pre>'.var_export($response, true).'</pre>';

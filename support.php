@@ -6,6 +6,7 @@ require_once "libs/sellsyconnect_curl.php";
 // Support
 //---------------------------------------------------------------------------
 
+/*
 $request = array(
     'method' => 'Support.getList',
     'params' => array(
@@ -21,7 +22,23 @@ $request = array(
         ),
     )
 );
+*/
 
+$request = array(
+    'method' => 'Support.getList',
+    'params' => array(
+        'pagination' => array(
+            'pagenum'   => 1,
+            'nbperpage' => 20,
+            'nbtotal'   => 4
+        ),
+        'search' => array(
+            'savedSearchId' => 1176
+        ),
+    )
+);
+
+/*
 $request = array(
     'method' => 'Support.create',
     'params' => array(
@@ -42,6 +59,15 @@ $request = array(
         )
     )
 );
+
+$request = array(
+    'method' => 'Support.updateStep',
+    'params' => array(
+        'ticketid'  => 170360,
+        'step'      => 'pending' // active, pending, closed, spam
+    )
+);
+*/
 
 $response = sellsyconnect_curl::load()->requestApi($request);
 echo '<pre>'.var_export($response, true).'</pre>';
